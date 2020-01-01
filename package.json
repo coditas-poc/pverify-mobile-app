@@ -4,7 +4,21 @@
   "private": true,
   "scripts": {
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "postinstall": "npx jetify",
+    "lint": "tslint --fix src/**/*.{ts,tsx}",
+    "clean": "rm -rf $TMPDIR/react-* && watchman watch-del-all && npm cache clean --force",
+    "ios:debug": "cp src/App/Config/index.dev.ts src/App/Config/index.ts && react-native run-ios",
+    "android:dedug": "cp src/App/Config/index.dev.ts src/App/Config/index.ts && react-native run-android",
+    "android:release": "cd android && ./gradlew assembleRelease",
+    "android:bundleRelease": "cd android && ./gradlew bundleRelease",
+    "android:clean": "cd android && ./gradlew clean",
+    "ios:devicelist": "xcrun simctl list devices"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint"
+    }
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.7.1",
@@ -35,6 +49,7 @@
     "@types/react-test-renderer": "^16.9.0",
     "babel-jest": "^24.1.0",
     "babel-plugin-module-resolver": "^4.0.0",
+    "husky": "^3.1.0",
     "jest": "^24.1.0",
     "metro-react-native-babel-preset": "0.54.1",
     "react-test-renderer": "16.8.6",
