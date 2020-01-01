@@ -1,0 +1,57 @@
+{
+  "compilerOptions": {
+    /* Basic Options */
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "strictFunctionTypes": true,
+    "preserveConstEnums": true,
+    "strictNullChecks": true,              /* Enable strict null checks. */
+    "strictPropertyInitialization": true,  /* Enable strict checking of property initialization in classes. */
+    "noImplicitThis": true,                /* Raise error on 'this' expressions with an implied 'any' type. */
+    "alwaysStrict": true,                  /* Parse in strict mode and emit "use strict" for each source file. */
+
+    /* Additional Checks */
+    "noFallthroughCasesInSwitch": true,    /* Report errors for fallthrough cases in switch statement. */
+    "sourceMap": true,
+    "noImplicitReturns": true,
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
+    "lib": ["es6", "es7"],
+    "resolveJsonModule": true,
+    "target": "esnext",
+    "module": "commonjs",
+    "allowJs": false,
+    "jsx": "react-native",
+    "noEmit": true,
+    "isolatedModules": true,
+
+    /* Strict Type-Checking Options */
+    "strict": true,
+    "noImplicitAny": true,
+
+    /* Module Resolution Options */
+    "moduleResolution": "node" /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */,
+    "baseUrl": ".",
+    "paths": {
+      "App/*": ["src/App/*"],
+      "Components/*": ["src/App/Components/*"],
+      "Actions/*": ["src/App/Actions/*"],
+      "Assets/*": ["src/App/Assets/*"],
+      "Config/*": ["src/App/Config/*"],
+      "Cointainers/*": ["src/App/Cointainers/*"],
+      "Navigators/*": ["src/App/Navigators/*"],
+      "Reducers/*": ["src/App/Reducers/*"],
+      "Services/*": ["src/App/Services/*"],
+      "Stores/*": ["src/App/Stores/*"],
+      "Theme/*": ["src/App/Theme/*"],
+    },
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true
+  },
+  "exclude": [
+    "node_modules",
+    "babel.config.js",
+    "metro.config.js",
+    "jest.config.js"
+  ]
+}
