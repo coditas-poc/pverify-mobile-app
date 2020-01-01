@@ -11,7 +11,7 @@ module.exports = {
           'Actions': './src/App/Actions',
           'Assets': './src/App/Assets',
           'Config': './src/App/Config',
-          'Cointainers': './src/App/Cointainers',
+          'Containers': './src/App/Containers',
           'Navigators': './src/App/Navigators',
           'Reducers': './src/App/Reducers',
           'Services': './src/App/Services',
