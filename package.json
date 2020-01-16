@@ -64,6 +64,9 @@
     "react-native-typed-sass-transformer": "^0.11.0",
     "react-test-renderer": "16.8.6",
     "redux-devtools-extension": "^2.13.8",
+    "stylelint": "^13.0.0",
+    "stylelint-config-react-native-css-modules": "^3.0.0",
+    "stylelint-react-native": "^2.1.1",
     "typescript": "^3.6.3"
   },
   "jest": {
