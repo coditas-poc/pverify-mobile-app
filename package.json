@@ -6,7 +6,7 @@
     "start": "react-native start",
     "test": "jest",
     "postinstall": "npx jetify",
-    "lint": "tslint --fix src/**/*.{ts,tsx}",
+    "lint": "tslint --fix src/**/*.{ts,tsx} && stylelint 'src/**/*.@(css|scss)'",
     "clean": "rm -rf $TMPDIR/react-* && watchman watch-del-all && npm cache clean --force",
     "ios:debug": "cp src/App/Config/index.dev.ts src/App/Config/index.ts && react-native run-ios",
     "android:dedug": "cp src/App/Config/index.dev.ts src/App/Config/index.ts && react-native run-android",
@@ -26,6 +26,7 @@
     "ramda": "^0.26.1",
     "react": "16.8.6",
     "react-native": "0.60.5",
+    "react-native-fontawesome": "^7.0.0",
     "react-native-gesture-handler": "^1.5.3",
     "react-native-reanimated": "^1.4.0",
     "react-native-screens": "^2.0.0-alpha.22",
@@ -42,16 +43,25 @@
     "@babel/runtime": "^7.5.0",
     "@react-native-community/eslint-config": "^0.0.3",
     "@types/jest": "^24.0.18",
+    "@types/node-sass": "^4.11.0",
     "@types/ramda": "^0.26.39",
     "@types/react": "^16.9.2",
-    "@types/react-native": "^0.60.14",
+    "@types/react-native": "kristerkari/react-native-types-for-css-modules#v0.57.43",
     "@types/react-redux": "^7.1.5",
     "@types/react-test-renderer": "^16.9.0",
     "babel-jest": "^24.1.0",
     "babel-plugin-module-resolver": "^4.0.0",
+    "babel-plugin-react-native-classname-to-style": "^1.2.2",
+    "babel-plugin-react-native-platform-specific-extensions": "^1.1.1",
     "husky": "^3.1.0",
     "jest": "^24.1.0",
     "metro-react-native-babel-preset": "0.54.1",
+    "node-sass": "^4.13.0",
+    "postcss": "^7.0.26",
+    "postcss-css-variables": "^0.14.0",
+    "postcss-loader": "^3.0.0",
+    "react-native-typed-postcss-transformer": "^0.10.2",
+    "react-native-typed-sass-transformer": "^0.11.0",
     "react-test-renderer": "16.8.6",
     "redux-devtools-extension": "^2.13.8",
     "typescript": "^3.6.3"
@@ -66,5 +76,21 @@
       "json",
       "node"
     ]
+  },
+  "postcss": {
+    "plugins": {
+      "postcss-css-variables": {}
+    }
+  },
+  "stylelint": {
+    "extends": "stylelint-config-react-native-css-modules",
+    "rules": {
+      "selector-class-pattern": "^[a-z][a-zA-Z0-9]*$",
+      "declaration-block-no-duplicate-properties": true,
+      "no-duplicate-selectors": true,
+      "no-extra-semicolons": true,
+      "no-eol-whitespace": true,
+      "no-missing-end-of-source-newline": true
+    }
   }
 }
