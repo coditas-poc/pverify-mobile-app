@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import {fetchUser} from 'Actions';
 import { liveInEurope } from 'App/Stores/Example/Selectors';
 import Style from './ExampleScreenStyle';
+import { Buttons } from 'App/Components/Button/Buttons';
 
 /**
  * This is an example of a container component.
@@ -30,11 +31,11 @@ class ExampleScreen extends React.Component<Props> {
   render() {
     return (
       <View style={Style.container}>
-        {this.props.userIsLoading ? (
+        {!this.props.userIsLoading ? (
           <ActivityIndicator size="large" color="#0000ff" />
         ) : (
             <View>
-              <View style={Style.logoContainer}>
+              {/* <View style={Style.logoContainer}>
               </View>
               <Text style={Style.text}>To get started, edit App.js</Text>
               <Text style={Style.instructions}>{instructions}</Text>
@@ -50,8 +51,9 @@ class ExampleScreen extends React.Component<Props> {
                       {this.props.liveInEurope ? 'I live in Europe !' : 'I don\'t live in Europe.'}
                     </Text>
                   </View>
-                )}
-              <Button onPress={() => this._fetchUser()} title="Refresh" />
+                )} */}
+                <Buttons />
+              {/* <Button onPress={() => this._fetchUser()} title="Refresh" /> */}
             </View>
           )}
       </View>

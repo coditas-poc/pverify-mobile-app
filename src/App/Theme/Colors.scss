@@ -1,0 +1,15 @@
+// Button Color
+$transparent: rgba(0,0,0,0) !default;
+$text: #212529 !default;
+$primary: #007bff !default;
+$success: #28a745 !default;
+$error: #dc3545 !default;
+
+
+:export {
+  transparent: $transparent;
+  text: $text;
+  primary: $primary;
+  success: $success;
+  error: $error;
+}
