@@ -57,5 +57,5 @@ const style = {
 export default {
   size,
   style,
-  type
+  type,
 };
