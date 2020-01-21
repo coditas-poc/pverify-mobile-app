@@ -8,7 +8,7 @@ import { Colors, Helpers } from 'Theme';
 interface Props {
     placeholder: string;
     editable: boolean;
-    children?: React.ReactNode
+    children?: React.ReactNode;
     field: {
         name: string;
         onBlur: any;
@@ -31,7 +31,7 @@ const Input = (props: Props) => {
     const color = editable ? Colors.text : Colors.textPrimary;
     const borderColor = errors[name] && touched[name] ? Colors.error : Colors.text;
     const inputStyle = [styles.input, { color }];
-    const inputCointainerStyle = [styles.inputCointainer, { borderBottomColor: borderColor }]
+    const inputCointainerStyle = [styles.inputCointainer, { borderBottomColor: borderColor }];
     return (
         <View style={Helpers.mainStart}>
             <View style={inputCointainerStyle}>
@@ -53,14 +53,13 @@ const Input = (props: Props) => {
     );
 };
 
-
 export const InputPasswordWithForgot = (props: Props) => {
     return (
         <Input {...props} >
             <Text style={styles.inputPasswordWithForgot}>Forget ?</Text>
         </Input>
-    )
-}
+    );
+};
 
 Input.defaultProps = {
     disabled: false,

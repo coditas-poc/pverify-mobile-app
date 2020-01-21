@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
   },
   inputCointainer: {
     borderBottomWidth: 1,
-    width: Metrics.screenWidth - 64
+    width: Metrics.screenWidth - 64,
   },
   inputPasswordWithForgot: {
     position: 'absolute',
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     top: 8,
     color: Colors.text,
     fontFamily: Fonts.type.base,
-    fontSize: normalize(14)
-  }
+    fontSize: normalize(14),
+  },
 });
 export default styles;

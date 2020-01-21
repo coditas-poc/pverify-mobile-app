@@ -33,6 +33,6 @@ export default StyleSheet.create({
     paddingHorizontal: '10%',
     borderColor: Colors.primary,
     marginHorizontal: '1%',
-    borderWidth: 1.5
+    borderWidth: 1.5,
   },
 });

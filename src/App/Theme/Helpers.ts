@@ -145,7 +145,7 @@ export default StyleSheet.create({
   },
   rowMainAlign: {
     flexDirection: 'row', 
-    alignItems: 'flex-start' 
+    alignItems: 'flex-start', 
   },
   rowReverse: {
     flexDirection: 'row-reverse',

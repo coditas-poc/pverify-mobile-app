@@ -11,14 +11,14 @@ export const LoginForm = () => {
     const initialValues = {
         email: '',
         password: '',
-    }
+    };
     return (
         <Formik
             initialValues={initialValues}
             validationSchema={LoginSchema}
-            onSubmit={(values) => { console.log(values) }}>
+            onSubmit={(values) => {  }}>
             {(props: FormikProps<any>) => (
-                
+
                     <KeyboardAwareScrollView>
                 <View style={styles.loginCointainer}>
                     <Field
@@ -52,7 +52,6 @@ export const LoginForm = () => {
     );
 };
 
-
 const ContinueView = () => {
     return (
         <View style={styles.continueCointainer}>
@@ -60,5 +59,5 @@ const ContinueView = () => {
             <Text style={styles.containuetext}> or continue with</Text>
             <View style={styles.continueLine} />
         </View>
-    )
-}
+    );
+};

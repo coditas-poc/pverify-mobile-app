@@ -28,7 +28,7 @@ export const Primary = (props: any) => {
 };
 
 export const Other = (props: any) => {
-  const buttonStyle = {...styles.buttonOther, ...props.buttonStyle}
+  const buttonStyle = {...styles.buttonOther, ...props.buttonStyle};
   return (<Button  {...props} buttonStyle={buttonStyle} textColor={styles.buttonOtherText} />);
 };
 

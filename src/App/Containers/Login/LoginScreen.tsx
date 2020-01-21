@@ -5,7 +5,7 @@ import { View, Image, StatusBar } from 'react-native';
 import styles from './LoginScreenstyle';
 import { Images, Colors } from 'Theme';
 import { LoginForm } from './LoginForm';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 class LoginScreen extends Component {
 
