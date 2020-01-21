@@ -6,8 +6,10 @@ import { Primary, Other } from 'Components/Button';
 import { View, Text } from 'react-native';
 import styles from './LoginScreenstyle';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-
-export const LoginForm = () => {
+type Props = {
+    navigation: any;
+};
+export const LoginForm = (props: Props) => {
     const initialValues = {
         email: '',
         password: '',
@@ -16,36 +18,36 @@ export const LoginForm = () => {
         <Formik
             initialValues={initialValues}
             validationSchema={LoginSchema}
-            onSubmit={(values) => {  }}>
-            {(props: FormikProps<any>) => (
+            onSubmit={(values) => { }}>
+            {(formProps: FormikProps<any>) => (
 
-                    <KeyboardAwareScrollView>
-                <View style={styles.loginCointainer}>
-                    <Field
-                        id="outlined-email-input"
-                        placeholder="Email"
-                        name="email"
-                        component={Input} />
-                    <Field
-                        id="outlined-password-input"
-                        placeholder="Password"
-                        name="password"
-                        component={InputPasswordWithForgot}
-                        secureTextEntry />
-                    <View style={styles.loginSignupWrapper}>
-                        <Primary onPress={props.handleSubmit} label="Log In" />
-                        <Other
-                            onPress={() => { }}
-                            label="Sign up"
-                            buttonStyle={styles.signUpButton} />
+                <KeyboardAwareScrollView>
+                    <View style={styles.loginCointainer}>
+                        <Field
+                            id="outlined-email-input"
+                            placeholder="Email"
+                            name="email"
+                            component={Input} />
+                        <Field
+                            id="outlined-password-input"
+                            placeholder="Password"
+                            name="password"
+                            component={InputPasswordWithForgot}
+                            secureTextEntry />
+                        <View style={styles.loginSignupWrapper}>
+                            <Primary onPress={formProps.handleSubmit} label="Log In" />
+                            <Other
+                                onPress={() => props.navigation.navigate('Signupscreen')}
+                                label="Sign up"
+                                buttonStyle={styles.signUpButton} />
+                        </View>
+                        <ContinueView />
+                        <View style={styles.fbGoogleWrapper}>
+                            <Other onPress={() => { }} label="Facebook" />
+                            <Other onPress={() => { }} label="Google" />
+                        </View>
                     </View>
-                    <ContinueView />
-                    <View style={styles.fbGoogleWrapper}>
-                        <Other onPress={() => { }} label="Facebook" />
-                        <Other onPress={() => { }} label="Google" />
-                    </View>
-                </View>
-                    </KeyboardAwareScrollView>
+                </KeyboardAwareScrollView>
             )}
 
         </Formik>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from "react-native"
+import { View, Text } from 'react-native';
 import styles from './style';
 const Card = ({ headerDecription, typeDecription }) => {
     return (
@@ -15,9 +15,7 @@ const Card = ({ headerDecription, typeDecription }) => {
                 This will be used to verify your Identification
             </Text>
         </View>
-    )
-}
-
+    );
+};
 
 export default Card;
-

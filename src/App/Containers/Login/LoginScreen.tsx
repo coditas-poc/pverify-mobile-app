@@ -5,10 +5,13 @@ import { View, Image, StatusBar } from 'react-native';
 import styles from './LoginScreenstyle';
 import { Images, Colors } from 'Theme';
 import { LoginForm } from './LoginForm';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-
-class LoginScreen extends Component {
-
+type Props = {
+    navigation: any;
+};
+class LoginScreen extends Component<Props> {
+    static navigationOptions = {
+        header: null,
+    };
     render() {
         return (
             <View style={styles.container}>
@@ -16,9 +19,7 @@ class LoginScreen extends Component {
                 <View style={styles.logoContainer}>
                     <Image source={Images.logo} style={styles.logo} />
                 </View>
-                
-                    <LoginForm />
-                
+                <LoginForm navigation={this.props.navigation} />
             </View>
         );
     }

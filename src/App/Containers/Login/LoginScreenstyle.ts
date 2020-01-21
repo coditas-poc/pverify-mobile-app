@@ -17,8 +17,8 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   logo: {
-    width: 200,
-    height: 200,
+    width: 180,
+    height: 180,
     resizeMode: 'contain' as 'contain',
   },
   loginCointainer: {
