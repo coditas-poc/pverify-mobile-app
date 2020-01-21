@@ -8,9 +8,11 @@
 export default {
   transparent: 'rgba(0,0,0,0)',
   text: '#6D6D6D',
+  textPrimary: '#000000',
   primary: '#22A7E5',
   cloud: '#93CAFB',
   background: '#FFFFFF',
   error: '#E50D18',
   border: '#BBBBBB',
+
 };

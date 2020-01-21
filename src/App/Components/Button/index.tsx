@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TouchableOpacity, Text, GestureResponderEvent } from 'react-native';
+import { TouchableOpacity, Text } from 'react-native';
 import styles from './style';
 
 type Props = {
@@ -15,7 +15,7 @@ type Props = {
 };
 
 const Button = (props: Props) => {
-  const {label, onPress, buttonStyle, textColor, children, theme, size, disabled } = props; 
+  const {label, onPress, buttonStyle, textColor } = props; 
   const buttonStyles = [styles.button, buttonStyle];
   return (
     <TouchableOpacity style={buttonStyles} onPress={onPress} activeOpacity={0.7}>
@@ -23,8 +23,13 @@ const Button = (props: Props) => {
     </TouchableOpacity>
   );
 };
-export const Primary = ({onPress, label}) => {
-  return (<Button onPress={onPress} label={label} buttonStyle={styles.buttonPrimary} textColor={styles.buttonPrimaryText} />);
+export const Primary = (props: any) => {
+  return (<Button  {...props} buttonStyle={styles.buttonPrimary} textColor={styles.buttonPrimaryText} />);
+};
+
+export const Other = (props: any) => {
+  const buttonStyle = {...styles.buttonOther, ...props.buttonStyle}
+  return (<Button  {...props} buttonStyle={buttonStyle} textColor={styles.buttonOtherText} />);
 };
 
 Button.defaultProps = {

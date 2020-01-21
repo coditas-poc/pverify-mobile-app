@@ -143,6 +143,10 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
   },
+  rowMainAlign: {
+    flexDirection: 'row', 
+    alignItems: 'flex-start' 
+  },
   rowReverse: {
     flexDirection: 'row-reverse',
   },

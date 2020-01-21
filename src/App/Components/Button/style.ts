@@ -6,7 +6,6 @@ export default StyleSheet.create({
   button: {
     padding: 10,
     position: 'relative',
-    backgroundColor: Colors.primary,
     shadowOpacity: 0.15,
     shadowOffset: {height: 6, width: 0},
     elevation: 3,
@@ -17,9 +16,23 @@ export default StyleSheet.create({
     ...Fonts.style.h4,
   },
   buttonPrimary: {
-    marginTop: 20,
-    borderRadius: 30.2,
-    paddingVertical: 16,
-    paddingHorizontal: 60.4,
+    backgroundColor: Colors.primary,
+    borderRadius: 30,
+    paddingVertical: '3%',
+    paddingHorizontal: '10%',
+  },
+  buttonOtherText: {
+    color: Colors.primary,
+    textAlign: 'center',
+    ...Fonts.style.h4,
+  },
+  buttonOther: {
+    backgroundColor: Colors.background,
+    borderRadius: 30,
+    paddingVertical: '3%',
+    paddingHorizontal: '10%',
+    borderColor: Colors.primary,
+    marginHorizontal: '1%',
+    borderWidth: 1.5
   },
 });
