@@ -1,6 +1,7 @@
 import {StyleSheet} from 'react-native';
 import Colors from 'App/Theme/Colors';
 import {Fonts} from 'App/Theme';
+import { normalize } from '../../Theme/Metrics';
 
 export default StyleSheet.create({
   button: {
@@ -13,7 +14,8 @@ export default StyleSheet.create({
   buttonPrimaryText: {
     color: Colors.background,
     textAlign: 'center',
-    ...Fonts.style.h4,
+    fontFamily: Fonts.type.base,
+    fontSize: normalize(14),
   },
   buttonPrimary: {
     backgroundColor: Colors.primary,
@@ -24,7 +26,8 @@ export default StyleSheet.create({
   buttonOtherText: {
     color: Colors.primary,
     textAlign: 'center',
-    ...Fonts.style.h4,
+    fontFamily: Fonts.type.base,
+    fontSize: normalize(14),
   },
   buttonOther: {
     backgroundColor: Colors.background,
