@@ -1,5 +1,6 @@
 const type = {
   base: 'Roboto-Regular',
+  medium: 'Roboto-Medium',
 };
 const size = {
   h1: 38,
