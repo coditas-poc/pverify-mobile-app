@@ -9,6 +9,7 @@ interface Props {
     placeholder: string;
     editable: boolean;
     children?: React.ReactNode;
+    inputStyle?: Object;
     field: {
         name: string;
         onBlur: any;
@@ -31,7 +32,7 @@ const Input = (props: Props) => {
     const color = editable ? Colors.text : Colors.textPrimary;
     const borderColor = errors[name] && touched[name] ? Colors.error : Colors.text;
     const inputStyle = [styles.input, { color }];
-    const inputCointainerStyle = [styles.inputCointainer, { borderBottomColor: borderColor }];
+    const inputCointainerStyle = [styles.inputCointainer, { borderBottomColor: borderColor }, props.inputStyle];
     return (
         <View style={Helpers.mainStart}>
             <View style={inputCointainerStyle}>
@@ -55,11 +56,35 @@ const Input = (props: Props) => {
 
 export const InputPasswordWithForgot = (props: Props) => {
     return (
-        <Input {...props} >
+        <Input {...props}>
             <Text style={styles.inputPasswordWithForgot}>Forget ?</Text>
         </Input>
     );
 };
+
+
+
+export const ConfirmContainer = (props: Props) => {
+    const { placeholder, field: { name }, children } = props;
+    return (
+        <View style={styles.borderContainer} >
+            <Text style={styles.containerPlaceHolder}>
+                {placeholder}
+            </Text>
+            {children}
+            <ErrorMessage name={name} component={FormError} />
+        </View >
+    )
+}
+
+export const InputWithBorder = (props: Props) => {
+    const { placeholder, field: { name }, children } = props;
+    return (
+        <ConfirmContainer {...props}>
+            <Input {...props} inputStyle={{ borderBottomWidth: 0 }} />
+        </ConfirmContainer>
+    );
+}
 
 Input.defaultProps = {
     disabled: false,

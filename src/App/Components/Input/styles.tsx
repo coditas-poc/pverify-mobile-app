@@ -25,5 +25,18 @@ const styles = StyleSheet.create({
     fontFamily: Fonts.type.base,
     fontSize: normalize(14),
   },
+  borderContainer: {
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#777777'
+  },
+  containerPlaceHolder: {
+    position: 'absolute',
+    top: -12,
+    left: 12,
+    color: '#777777',
+    paddingHorizontal: 6,
+    backgroundColor: 'white'
+  },
 });
 export default styles;

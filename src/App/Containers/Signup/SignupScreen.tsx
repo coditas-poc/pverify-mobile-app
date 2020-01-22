@@ -8,6 +8,7 @@ import { Colors } from 'Theme';
 // import { DLFrontForm } from './DLFrontForm';
 import { InsuranceBackForm } from './InsuranceBackForm';
 import { InsuranceFrontForm } from './InsuranceFrontForm';
+import { ProfileReview } from './ProfileReview';
 
 type Props = {
     navigation: any;
@@ -24,8 +25,9 @@ class SignupScreen extends Component<Props> {
                 {/* <SignupForm navigation={this.props.navigation}/> */}
                 {/* <DLFrontForm navigation={this.props.navigation}/> */}
                 {/* <DLBackForm navigation={this.props.navigation}/> */}
-                <InsuranceBackForm navigation={this.props.navigation}/>
+                {/* <InsuranceBackForm navigation={this.props.navigation}/> */}
                 {/* <InsuranceFrontForm navigation={this.props.navigation}/> */}
+                <ProfileReview navigation={this.props.navigation}/>
             </View>
         );
     }
