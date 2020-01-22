@@ -20,34 +20,31 @@ export const LoginForm = (props: Props) => {
             validationSchema={LoginSchema}
             onSubmit={(values) => { }}>
             {(formProps: FormikProps<any>) => (
-
-                <KeyboardAwareScrollView>
-                    <View style={styles.loginCointainer}>
-                        <Field
-                            id="outlined-email-input"
-                            placeholder="Email"
-                            name="email"
-                            component={Input} />
-                        <Field
-                            id="outlined-password-input"
-                            placeholder="Password"
-                            name="password"
-                            component={InputPasswordWithForgot}
-                            secureTextEntry />
-                        <View style={styles.loginSignupWrapper}>
-                            <Primary onPress={formProps.handleSubmit} label="Log In" />
-                            <Other
-                                onPress={() => props.navigation.navigate('Signupscreen')}
-                                label="Sign up"
-                                buttonStyle={styles.signUpButton} />
-                        </View>
-                        <ContinueView />
-                        <View style={styles.fbGoogleWrapper}>
-                            <Other onPress={() => { }} label="Facebook" />
-                            <Other onPress={() => { }} label="Google" />
-                        </View>
+                <>
+                    <Field
+                        id="outlined-email-input"
+                        placeholder="Email"
+                        name="email"
+                        component={Input} />
+                    <Field
+                        id="outlined-password-input"
+                        placeholder="Password"
+                        name="password"
+                        component={InputPasswordWithForgot}
+                        secureTextEntry />
+                    <View style={styles.loginSignupWrapper}>
+                        <Primary onPress={formProps.handleSubmit} label="Log In" />
+                        <Other
+                            onPress={() => props.navigation.navigate('Signupscreen')}
+                            label="Sign up"
+                            buttonStyle={styles.signUpButton} />
                     </View>
-                </KeyboardAwareScrollView>
+                    <ContinueView />
+                    <View style={styles.fbGoogleWrapper}>
+                        <Other onPress={() => { }} label="Facebook" />
+                        <Other onPress={() => { }} label="Google" />
+                    </View>
+                </>
             )}
 
         </Formik>

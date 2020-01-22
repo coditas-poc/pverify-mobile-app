@@ -7,9 +7,6 @@ export default StyleSheet.create({
   button: {
     padding: 10,
     position: 'relative',
-    shadowOpacity: 0.15,
-    shadowOffset: {height: 6, width: 0},
-    elevation: 3,
   },
   buttonPrimaryText: {
     color: Colors.background,

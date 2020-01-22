@@ -8,7 +8,7 @@ import { Colors } from 'Theme';
 
 export const SignUpButomContent = ({ handleSubmit }: any) => (
     <>
-        <View style={{ justifyContent: 'center', marginTop: '15%', height: 65 }}>
+        <View style={{ justifyContent: 'center', marginTop: normalize(16), height: 65 }}>
             <Primary onPress={handleSubmit} label="Sign up" />
         </View>
         <View style={{
