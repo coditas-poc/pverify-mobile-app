@@ -2,8 +2,11 @@ import React from 'react';
 import { View } from 'react-native';
 import styles from './SignupScreenStyle';
 import { Other } from 'Components/Button';
-
-export const ButtomContent = ({skip, manual}) => {
+type ButtonContentProps = {
+    skip: any;
+    manual: any;
+};
+export const ButtomContent = ({skip, manual}: ButtonContentProps) => {
     return (
         <View style={styles.buttomContent}>
             <View style={styles.skipContent}>
