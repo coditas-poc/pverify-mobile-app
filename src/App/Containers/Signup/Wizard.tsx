@@ -17,27 +17,40 @@ type State = {
     values: any;
 };
 
-class Wizard extends Component<Props, State> {
+export class Wizard extends Component<Props, State> {
     static Page = ({ children, parentState }: any) => {
         return children(parentState);
     }
-    constructor(props: any) {
+    constructor(props: Readonly<Props>) {
         super(props);
         this.state = {
             page: 0,
-            values: this.props.initialValues,
+            values: props.initialValues,
         };
     }
-    next = (values: any) =>
-        this.setState(state => ({
-            page: Math.min(state.page + 1, this.props.children.length - 1),
-            values,
-        }))
+    next = (values: any) => {
+        this.setState(
+            state => ({
+                page: Math.min(state.page + 1, this.props.children.length - 1),
+                values,
+            }),
+            () =>
+                this.props.navigation.setParams({
+                    page: this.state.page,
+                }),
+        );
+    };
 
     previous = () =>
-        this.setState(state => ({
-            page: Math.max(state.page - 1, 0),
-        }))
+        this.setState(
+            state => ({
+                page: Math.max(state.page - 1, 0),
+            }),
+            () =>
+                this.props.navigation.setParams({
+                    page: this.state.page,
+                }),
+        );
     validationSchema = () => {
         const { children } = this.props;
         const { page } = this.state;
@@ -85,5 +98,3 @@ class Wizard extends Component<Props, State> {
         );
     }
 }
-
-export default Wizard;
