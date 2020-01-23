@@ -39,7 +39,7 @@ export class Wizard extends Component<Props, State> {
                     page: this.state.page,
                 }),
         );
-    };
+    }
 
     previous = () =>
         this.setState(
@@ -50,7 +50,7 @@ export class Wizard extends Component<Props, State> {
                 this.props.navigation.setParams({
                     page: this.state.page,
                 }),
-        );
+        )
     validationSchema = () => {
         const { children } = this.props;
         const { page } = this.state;

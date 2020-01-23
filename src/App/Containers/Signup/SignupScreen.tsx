@@ -19,6 +19,8 @@ type Props = {
 };
 
 class SignupScreen extends Component<Props> {
+
+    child: React.RefObject<any>;
     static navigationOptions = ({ navigation }: Props) => {
         const page = navigation.state && navigation.state.params && navigation.state.params.page || 0;
         return {
@@ -30,9 +32,7 @@ class SignupScreen extends Component<Props> {
                 </TouchableOpacity>
             ),
         };
-    };
-
-    child: React.RefObject<any>;
+    }
     constructor(props: Readonly<Props>) {
         super(props);
         this.child = React.createRef();
@@ -50,8 +50,6 @@ class SignupScreen extends Component<Props> {
         //     actions.setSubmitting(false);
         // });
     }
-
-
 
     render() {
         const initialValues = {
