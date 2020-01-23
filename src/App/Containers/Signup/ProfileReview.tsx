@@ -1,23 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik, Field, FormikProps } from 'formik';
-import Input, { InputWithBorder } from 'Components/Input';
+import Input, { InputWithBorder, InputWithDatePicker } from 'Components/Input';
 import { Other, Primary } from 'Components/Button';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import styles from './SignupScreenStyle';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { SignupSchema } from '../../Utils/formikValidation';
 import { normalize, screenWidth } from '../../Theme/Metrics';
-import Fonts from 'App/Theme/Fonts';
 import { Colors } from 'Theme';
+import { PickerWithContainer } from 'App/Components/Picker';
+import { sexPicker, providerDummy } from 'App/Constants';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 type Props = {
     navigation: any;
 };
+type CheckBoxProps = {
+    isChecked: boolean;
+    onPress: any;
+    text: string;
+};
 export const ProfileReview = (props: Props) => {
     const initialValues = {
-        email: '',
-        password: '',
-        confirmPassword: '',
+        name: 'Sam Johnson',
+        dob: new Date().toISOString(),
+        memberId: '0123456789',
     };
+    const [isCondition1Checked, setCondition1] = useState(false);
+    const [isCondition2Checked, setCondition2] = useState(false);
     return (
         <Formik
             initialValues={initialValues}
@@ -25,61 +34,72 @@ export const ProfileReview = (props: Props) => {
             onSubmit={(values) => { }}>
             {(formProps: FormikProps<any>) => (
                 <KeyboardAwareScrollView>
-                    <View style={styles.signupCointainer}>
-                        <View style={{
-                            justifyContent: 'space-evenly',
-                            marginTop: 12,
-                            flexDirection: 'column',
-                        }}>
-                            <Text style={{
-                                fontSize: 22,
-                                fontFamily: 'roboto-medium',
-                                color: Colors.primary,
-                            }}>Please Review And Update Your Profile</Text>
-                        </View>
+                    <View style={[styles.signupCointainer,
+                    {
+                        marginEnd: 12,
+                    }]}>
+                        <Text style={styles.finalRegisterScreenHeaderText}>Please review and finish your profile</Text>
                         <View style={{ justifyContent: 'center', marginTop: 22 }}>
                             <Field
-                                id="outlined-email-input"
-                                placeholder="Email"
-                                name="email"
+                                id="outlined-name-input"
+                                placeholder="Name"
+                                name="name"
                                 component={InputWithBorder} />
                             <Field
-                                id="outlined-password-input"
-                                placeholder="Password"
-                                name="password"
-                                component={Input}
-                                secureTextEntry />
+                                id="outlined-date-of-birth-input"
+                                placeholder="Date of birth"
+                                name="dob"
+                                component={InputWithDatePicker}
+                            />
                             <Field
-                                id="outlined-confirm-password-input"
-                                placeholder="Confirm Password"
-                                name="confirmpassword"
-                                component={Input}
-                                secureTextEntry />
+                                id="outlined-sex-picker"
+                                placeholder="Sex"
+                                name="sex"
+                                options={sexPicker}
+                                component={PickerWithContainer}
+                            />
+                            <Field
+                                id="outlined-provider-picker"
+                                placeholder="Provider"
+                                name="provider"
+                                options={providerDummy}
+                                component={PickerWithContainer}
+                            />
+                            <Field
+                                id="outlined-member-input"
+                                placeholder="Member ID"
+                                name="memberId"
+                                component={InputWithBorder} />
                         </View>
-                        <View style={{ justifyContent: 'center', marginTop: '15%' }}>
-                            <Primary onPress={formProps.handleSubmit} label="Sign up" />
+                        <View style={styles.checkBoxParentContainer}>
+                            <CheckBoxWithText
+                                isChecked={isCondition1Checked}
+                                text={'I have read and accepted MyHealthID’s Terms of use and Privacy policy '}
+                                onPress={() => setCondition1(!isCondition1Checked)} />
+                            <CheckBoxWithText
+                                isChecked={isCondition2Checked}
+                                text={'I have read and accepted MyHealthID’s HIPPA Authorization.'}
+                                onPress={() => setCondition2(!isCondition2Checked)} />
                         </View>
-                        <View style={{ justifyContent: 'space-around', flexDirection: 'row', alignItems: 'flex-start', marginTop: '10%' }}>
-                            <Text style={{ fontSize: normalize(14), fontFamily: Fonts.type.base, color: Colors.text }}>Already have an account?</Text>
-                            <Other
-                                onPress={() => { }}
-                                label="Log in"
-                                buttonStyle={styles.signUpButton} />
+                        <View style={{ justifyContent: 'center' }}>
+                            <Primary onPress={formProps.handleSubmit} label="Join" />
                         </View>
-                        <View style={{ flexDirection: 'column', alignItems: 'flex-start', justifyContent: 'space-around', width: '100%', marginTop: '10%' }}>
-                            <Text style={{
-                                textAlign: 'left',
-                                fontSize: normalize(14),
-                                padding: 8,
-                                fontFamily: Fonts.type.base, color: Colors.text,
-                            }}> By signing up, you indicate that you have read and agree to the</Text>
-                            <Other onPress={() => { }} label="Terms and Service" buttonStyle={styles.signUpButton} />
-                        </View>
-
                     </View>
                 </KeyboardAwareScrollView>
             )}
 
         </Formik>
+    );
+};
+
+const CheckBoxWithText = (props: CheckBoxProps) => {
+    const { isChecked, onPress, text } = props;
+    return (
+        <View style={styles.checkBoxContainer}>
+            <TouchableOpacity onPress={onPress} activeOpacity={0.8}>
+                <Icon name={isChecked ? 'checkbox-marked-outline' : 'checkbox-blank-outline'} size={24} style={{ marginTop: 8 }} />
+            </TouchableOpacity>
+            <Text style={styles.termsText}>{text}</Text>
+        </View>
     );
 };

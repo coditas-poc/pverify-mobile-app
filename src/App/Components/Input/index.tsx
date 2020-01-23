@@ -1,10 +1,11 @@
-import React from 'react';
-import { View, TextInput, Text } from 'react-native';
+import React, { useState } from 'react';
+import { View, TextInput, Text, TouchableOpacity } from 'react-native';
 import styles from './styles';
 import { ErrorMessage } from 'formik';
 import FormError from '../FormError';
 import { Colors, Helpers } from 'Theme';
-
+import { ConfirmContainer } from '../InputContainer';
+import DateTimePicker from '@react-native-community/datetimepicker';
 interface Props {
     placeholder: string;
     editable: boolean;
@@ -62,29 +63,46 @@ export const InputPasswordWithForgot = (props: Props) => {
     );
 };
 
-
-
-export const ConfirmContainer = (props: Props) => {
-    const { placeholder, field: { name }, children } = props;
-    return (
-        <View style={styles.borderContainer} >
-            <Text style={styles.containerPlaceHolder}>
-                {placeholder}
-            </Text>
-            {children}
-            <ErrorMessage name={name} component={FormError} />
-        </View >
-    )
-}
-
 export const InputWithBorder = (props: Props) => {
-    const { placeholder, field: { name }, children } = props;
+    const { placeholder, field: { name } } = props;
     return (
-        <ConfirmContainer {...props}>
-            <Input {...props} inputStyle={{ borderBottomWidth: 0 }} />
+        <ConfirmContainer placeholder={placeholder} name={name}>
+            <Input {...props} inputStyle={styles.inputWithContainer} />
         </ConfirmContainer>
     );
-}
+};
+
+export const InputWithDatePicker = (props: Props) => {
+    const { placeholder, field: { name, value }, form: { setFieldValue } } = props;
+    const [isPickerVisible, setPickerVisibility] = useState(false);
+    let newField = { ...props.field };
+    if (value) {
+        newField = { ...newField, value: getDateFromString(new Date(value)) };
+    }
+    return (
+        <ConfirmContainer placeholder={placeholder} name={name}>
+            <TouchableOpacity activeOpacity={0.8}
+                onPress={() => setPickerVisibility(true)}>
+                <Input {...props} field={newField} editable={false} inputStyle={styles.inputWithContainer} />
+            </TouchableOpacity>
+            {isPickerVisible &&
+                <DateTimePicker
+                    onChange={(event, date) => {
+                        setPickerVisibility(false);
+                        setFieldValue(name, date?.toISOString());
+                    }}
+                    value={value ? new Date(value) : new Date()} />
+            }
+        </ConfirmContainer>
+    );
+};
+
+const getDateFromString = (date: Date) => {
+    let day = date.getDate() > 9 ? date.getDate() : `0${date.getDate()}`;
+    let month = (date.getMonth() + 1) > 9 ? (date.getMonth() + 1) : `0${date.getMonth() + 1}`;
+    let year = date.getFullYear();
+    return `${month}/${day}/${year}`;
+};
 
 Input.defaultProps = {
     disabled: false,
