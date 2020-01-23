@@ -26,11 +26,11 @@ interface Props {
     };
 }
 export const PickerWithContainer = (props: Props) => {
-    const { placeholder, field: { name, value }, form: { setFieldValue }, options } = props
+    const { placeholder, field: { name, value }, form: { setFieldValue }, options } = props;
     return (
         <ConfirmContainer placeholder={placeholder} name={name}>
             <Picker
-                onValueChange={(value) => { setFieldValue(name, value) }}
+                onValueChange={(value) => { setFieldValue(name, value); }}
                 selectedValue={value}
                 style={{ marginStart: 12 }}
                 mode={'dropdown'}>
@@ -41,5 +41,5 @@ export const PickerWithContainer = (props: Props) => {
                 })}
             </Picker>
         </ConfirmContainer>
-    )
-}
+    );
+};
