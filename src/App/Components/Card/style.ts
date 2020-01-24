@@ -32,6 +32,7 @@ export default StyleSheet.create({
     width: normalize(240),
     borderRadius: normalize(8),
     marginVertical: normalize(10),
+    overflow: 'hidden',
   },
   cardbottomtext: {
     fontFamily: Fonts.type.medium,

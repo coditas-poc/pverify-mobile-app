@@ -4,8 +4,9 @@ import styles from './style';
 type CardProps = {
     headerDecription: string;
     typeDecription: string;
+    children: React.ReactNode
 };
-const Card = ({ headerDecription, typeDecription }: CardProps) => {
+const Card = ({ headerDecription, typeDecription, children }: CardProps) => {
     return (
         <View style={styles.cardCointainer}>
             <Text style={styles.cardHeaderText}>
@@ -13,6 +14,7 @@ const Card = ({ headerDecription, typeDecription }: CardProps) => {
             </Text>
             <Text style={styles.cardcontentText}>{typeDecription}</Text>
             <View style={styles.cardCameracontent}>
+                {children}
             </View>
             <Text style={styles.cardbottomtext}>
                 This will be used to verify your Identification

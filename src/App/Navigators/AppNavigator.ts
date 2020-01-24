@@ -5,6 +5,7 @@ import SplashScreen from 'Containers/SplashScreen/SplashScreen';
 import LoginScreen from 'App/Containers/Login/LoginScreen';
 import SignupScreen from 'App/Containers/Signup/SignupScreen';
 import { Colors } from 'Theme';
+// import CameraScreen from '../Containers/Cameras/CameraScreen';
 
 /**
  * The root screen contains the application's navigation.
@@ -15,6 +16,7 @@ const StackNavigator = createStackNavigator(
     LoginScreen: LoginScreen,
     Signupscreen: SignupScreen,
     MainScreen: ExampleScreen,
+    // CameraScreen: CameraScreen,
   },
   {
     initialRouteName: 'SplashScreen',
