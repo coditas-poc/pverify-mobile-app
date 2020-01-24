@@ -34,7 +34,7 @@ Header.Title = ({ title }: TitleProps) => {
 Header.Right = ({ onPress, type, name }: Props) => {
     const renderComponent = type === 'Icon' ?
         <Image source={name} style={styles.imageButton} /> :
-        <Text style={styles.textButton}>{name}</Text>
+        <Text style={styles.textButton}>{name}</Text>;
     return (
         <TouchableOpacity
             activeOpacity={0.7}

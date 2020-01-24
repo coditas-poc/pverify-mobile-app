@@ -19,6 +19,6 @@ export default StyleSheet.create({
     fontFamily: Fonts.type.base,
     fontSize: normalize(14),
     marginRight: normalize(16),
-    color: Colors.background
-}
+    color: Colors.background,
+},
 });
