@@ -4,4 +4,5 @@
 
 export default {
   logo: require('Assets/Images/HealthID_logo.png'),
+  back: require('Assets/icons/back.png'),
 };

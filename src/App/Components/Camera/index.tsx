@@ -1,11 +1,11 @@
-import { SafeAreaView } from "react-navigation";
-import { ActivityIndicator, View, Text, StyleSheet } from "react-native";
-import { normalize } from "App/Theme/Metrics";
+import { SafeAreaView } from 'react-navigation';
+import { ActivityIndicator, View, Text, StyleSheet } from 'react-native';
+import { normalize } from 'App/Theme/Metrics';
 import { RNCamera, RNCameraProps } from 'react-native-camera';
-import { Colors } from "App/Theme";
-import React from "react";
+import { Colors } from 'App/Theme';
+import React from 'react';
 
-import styles from './style'
+import styles from './style';
 
 type Props = {
     flash?: 'off' | 'on' | 'auto' | 'torch',
@@ -13,7 +13,7 @@ type Props = {
     autoFocus?: 'off' | 'on',
     depth?: number,
     type?: 'back' | 'front',
-    whiteBalance?: RNCameraProps["whiteBalance"],
+    whiteBalance?: RNCameraProps['whiteBalance'],
     ratio?: string,
     recordOptions?: {
         mute: boolean,
@@ -27,9 +27,8 @@ type Props = {
     faces?: [],
     textBlocks?: [],
     barcodes?: RNCameraProps['barCodeTypes'],
-    chiildren?: React.ReactNode
+    chiildren?: React.ReactNode,
 };
-
 
 let Ocr = (props: Props, forwardedRef: any) => {
     const { type, flash, autoFocus, zoom, whiteBalance, ratio, depth } = props;
@@ -38,7 +37,7 @@ let Ocr = (props: Props, forwardedRef: any) => {
         Camera access was not granted. Please go to your phone's settings and allow camera access.
             </Text>;
     return (
-        <RNCamera ref={ref => { forwardedRef = ref }}
+        <RNCamera ref={ref => { forwardedRef = ref; }}
             style={styles.preview}
             type={type}
             flashMode={flash}
@@ -76,7 +75,4 @@ let Ocr = (props: Props, forwardedRef: any) => {
 };
 Ocr = React.forwardRef<Props, React.RefForwardingComponent<typeof RNCamera>>(Ocr);
 
-export default Ocr
-
-
-
+export default Ocr;

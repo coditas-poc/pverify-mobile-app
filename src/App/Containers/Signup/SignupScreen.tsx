@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { View, StatusBar, TouchableOpacity, Image, Text } from 'react-native';
+import { View, StatusBar } from 'react-native';
 
 import styles from './SignupScreenStyle';
-import { Colors } from 'Theme';
+import { Colors, Images } from 'Theme';
 import { DLBackForm } from './DLBackForm';
 import { DLFrontForm } from './DLFrontForm';
 import { InsuranceBackForm } from './InsuranceBackForm';
@@ -11,6 +11,7 @@ import { InsuranceFrontForm } from './InsuranceFrontForm';
 import { SignupForm } from './SignupForm';
 import { Wizard } from './Wizard';
 import { SignupSchema } from '../../Utils/formikValidation';
+import Header from 'App/Components/Header';
 
 type Props = {
     navigation: any;
@@ -19,29 +20,30 @@ type Props = {
 };
 
 class SignupScreen extends Component<Props> {
-
     child: React.RefObject<any>;
     static navigationOptions = ({ navigation }: Props) => {
-        const page = navigation.state && navigation.state.params && navigation.state.params.page || 0;
+        const { state } = navigation;
+        const page = state.params && state.params.page;
+        const title = state.params && state.params.title;
         return {
-            headerLeft: page !== 0 && (
-                <TouchableOpacity
-                    onPress={() => navigation.state.params.previous()}>
-                    <Text>Back</Text>
-                    {/* <Image source={Images.ArrowBack} style={styles.backButton} /> */}
-                </TouchableOpacity>
-            ),
+            headerLeft: <Header.Left
+                type={Images.back}
+                onPress={() => page !== 0 ?
+                    navigation.state.params.previous() : navigation.pop()} />,
+            headerTitle: <Header.Title title={title} />,
         };
     }
     constructor(props: Readonly<Props>) {
         super(props);
         this.child = React.createRef();
     }
+
     componentDidMount() {
         const { navigation } = this.props;
         navigation.setParams({
             previous: () => this.child.current.previous(),
-            page: this.child.current.state.page || 0,
+            page: this.child.current.state.page,
+            title: this.child.current.state.title,
         });
     }
     onSubmit = (values: any, actions: any) => {

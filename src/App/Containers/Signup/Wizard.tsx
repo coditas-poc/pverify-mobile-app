@@ -14,6 +14,7 @@ type Props = {
 };
 type State = {
     page: number;
+    title: string;
     values: any;
 };
 
@@ -25,18 +26,41 @@ export class Wizard extends Component<Props, State> {
         super(props);
         this.state = {
             page: 0,
+            title: 'Sign up',
             values: props.initialValues,
         };
+    }
+    setTitle = (page: number) => {
+        let title = '';
+        switch (page) {
+            case 0:
+                title = 'Sign up';
+                break;
+            case 1:
+            case 2:
+                title = 'Driver License';
+                break;
+            case 3:
+            case 4:
+                title = 'Insurance Card';
+                break;
+            default:
+                title = '';
+                break;
+        }
+        return title;
     }
     next = (values: any) => {
         this.setState(
             state => ({
                 page: Math.min(state.page + 1, this.props.children.length - 1),
+                title: this.setTitle(Math.min(state.page + 1, this.props.children.length - 1)),
                 values,
             }),
             () =>
                 this.props.navigation.setParams({
                     page: this.state.page,
+                    title: this.setTitle(this.state.page),
                 }),
         );
     }
@@ -45,10 +69,12 @@ export class Wizard extends Component<Props, State> {
         this.setState(
             state => ({
                 page: Math.max(state.page - 1, 0),
+                title: this.setTitle(Math.max(state.page - 1, 0)),
             }),
             () =>
                 this.props.navigation.setParams({
                     page: this.state.page,
+                    title: this.setTitle(this.state.page),
                 }),
         )
     validationSchema = () => {
