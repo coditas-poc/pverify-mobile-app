@@ -10,21 +10,21 @@ export default StyleSheet.create({
     width: normalize(272),
     borderRadius: normalize(8),
     marginTop: normalize(32),
-    alignItems: 'flex-start',
+    alignItems: 'center',
     padding: normalize(16),
   },
   cardHeaderText: {
     fontFamily: Fonts.type.medium,
     fontSize: normalize(20),
     color: Colors.background,
-    textAlign: 'left',
+    textAlign: 'center',
   },
   cardcontentText: {
     marginTop: normalize(16),
     fontFamily: Fonts.type.medium,
     fontSize: normalize(14),
     color: Colors.background,
-    textAlign: 'left',
+    textAlign: 'center',
   },
   cardCameracontent: {
     backgroundColor: Colors.background,
@@ -36,8 +36,8 @@ export default StyleSheet.create({
   },
   cardbottomtext: {
     fontFamily: Fonts.type.medium,
-    fontSize: normalize(16),
+    fontSize: normalize(14),
     color: Colors.background,
-    textAlign: 'left',
+    textAlign: 'center',
   },
 });
