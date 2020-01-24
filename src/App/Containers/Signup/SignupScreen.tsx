@@ -31,11 +31,7 @@ class SignupScreen extends Component<Props> {
                 onPress={() => page !== 0 ?
                     navigation.state.params.previous() : navigation.pop()} />,
             headerTitle: <Header.Title title={title} />,
-            headerRight: <Header.Right
-                type="Text"
-                name="Skip"
-                onPress={() => page !== 0 ?
-                    navigation.state.params.next() : null} />,
+            headerRight: page !== 0 ? <Header.Right type="Text" name="Skip" onPress={() => navigation.state.params.next()} /> : null,
         };
     }
     constructor(props: Readonly<Props>) {

@@ -5,7 +5,6 @@ import Input, { InputPasswordWithForgot } from 'Components/Input';
 import { Primary, Other } from 'Components/Button';
 import { View, Text } from 'react-native';
 import styles from './LoginScreenstyle';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 type Props = {
     navigation: any;
 };
