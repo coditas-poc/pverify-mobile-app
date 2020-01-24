@@ -2,17 +2,17 @@ import React from 'react';
 import { View } from 'react-native';
 import styles from './SignupScreenStyle';
 import { Other } from 'Components/Button';
+import { normalize } from '../../Theme/Metrics';
+
 type ButtonContentProps = {
-    skip: any;
+    capture: any;
     manual: any;
 };
-export const ButtomContent = ({skip, manual}: ButtonContentProps) => {
+export const ButtomContent = ({ capture, manual }: ButtonContentProps) => {
     return (
         <View style={styles.buttomContent}>
-            <View style={styles.skipContent}>
-                <Other onPress={skip} label="Skip" buttonStyle={styles.signUpButton} />
-            </View>
-            <View style={styles.manualContent}>
+            <Other onPress={capture} label="Capture" />
+            <View style={{ marginTop: normalize(16) }}>
                 <Other onPress={manual} label="Enter Manually" buttonStyle={styles.signUpButton} />
             </View>
         </View>

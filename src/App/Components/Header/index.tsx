@@ -7,7 +7,8 @@ import { Colors } from 'Theme';
 
 type Props = {
     onPress: any;
-    type: any;
+    type: string;
+    name?: any;
     children?: any;
 };
 type TitleProps = {
@@ -30,12 +31,16 @@ Header.Title = ({ title }: TitleProps) => {
         </View>
     );
 };
-Header.Right = ({ onPress, type }: Props) => {
+Header.Right = ({ onPress, type, name }: Props) => {
+    const renderComponent = type === 'Icon' ?
+        <Image source={name} style={styles.imageButton} /> :
+        <Text style={styles.textButton}>{name}</Text>
     return (
         <TouchableOpacity
+            activeOpacity={0.7}
             style={styles.buttonContainer}
             onPress={onPress}>
-            <Image source={type} style={styles.imageButton} />
+            {renderComponent}
         </TouchableOpacity>
     );
 };
@@ -43,6 +48,7 @@ Header.Right = ({ onPress, type }: Props) => {
 Header.Left = ({ onPress, type }: Props) => {
     return (
         <TouchableOpacity
+            activeOpacity={0.7}
             style={styles.buttonContainer}
             onPress={onPress}>
             <Image source={type} style={styles.imageButton} />

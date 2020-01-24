@@ -31,6 +31,11 @@ class SignupScreen extends Component<Props> {
                 onPress={() => page !== 0 ?
                     navigation.state.params.previous() : navigation.pop()} />,
             headerTitle: <Header.Title title={title} />,
+            headerRight: <Header.Right
+                type='Text'
+                name='Skip'
+                onPress={() => page !== 0 ?
+                    navigation.state.params.next() : null} />,
         };
     }
     constructor(props: Readonly<Props>) {
@@ -41,6 +46,7 @@ class SignupScreen extends Component<Props> {
     componentDidMount() {
         const { navigation } = this.props;
         navigation.setParams({
+            next: () => this.child.current.next(),
             previous: () => this.child.current.previous(),
             page: this.child.current.state.page,
             title: this.child.current.state.title,

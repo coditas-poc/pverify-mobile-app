@@ -114,7 +114,7 @@ export class Wizard extends Component<Props, State> {
                             <View style={styles.signupCointainer}>
                                 {React.cloneElement(activePage, parentState)}
                                 {page === 0 && <SignUpButomContent handleSubmit={this.next} />}
-                                {page !== 0 && !isLastPage && <ButtomContent skip={this.next} manual={() => { }} />}
+                                {page !== 0 && !isLastPage && <ButtomContent capture={()=>{}} manual={() => { }} />}
                                 {isLastPage && <Primary onPress={formikProps.handleSubmit} label="Join" />}
                             </View>
                         </KeyboardAwareScrollView>

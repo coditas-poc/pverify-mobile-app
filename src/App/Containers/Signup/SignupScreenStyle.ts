@@ -29,19 +29,11 @@ export default StyleSheet.create({
   },
 
   buttomContent: {
-    flexDirection: 'row',
-    justifyContent: 'space-evenly',
-    marginTop: normalize(39),
-    bottom: normalize(41),
-    position: 'absolute',
-    width: normalize(272),
-  },
-  skipContent: {
-    flex: 1,
-    alignItems: 'flex-start',
-  },
-  manualContent: {
-    flex: 1,
-    alignItems: 'flex-end',
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    marginTop: normalize(16),
+    paddingHorizontal: normalize(10),
+    position: 'relative',
   },
 });
