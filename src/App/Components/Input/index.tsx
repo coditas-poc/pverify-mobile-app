@@ -83,7 +83,7 @@ export const OtpInput = (props: Props) => {
                 value={value}
                 placeholder={placeholder}
                 onChangeText={(value) => {
-                    props.onTextChange(value)
+                    props.onTextChange(value);
                     // setFieldValue(name, value);
                 }}
                 onBlur={(value) => onBlur(value)}
