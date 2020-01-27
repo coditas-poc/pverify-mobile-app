@@ -1,6 +1,6 @@
 import React from 'react';
 import { Field } from 'formik';
-import Input from 'Components/Input';
+import Input, { InputWithBorder } from 'Components/Input';
 import { View, Text } from 'react-native';
 import { normalize } from 'App/Theme/Metrics';
 import { Fonts } from 'App/Theme';
@@ -16,7 +16,7 @@ export const PhoneForm = (props: any) => {
                     id="outlined-phone-input"
                     placeholder="Phone"
                     name="phone"
-                    component={Input} />
+                    component={InputWithBorder} />
             </View>
             <Text style={{
                 marginBottom: normalize(24),

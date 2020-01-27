@@ -11,6 +11,7 @@ interface Props {
     children?: React.ReactNode;
     inputStyle?: Object;
     showError?: boolean;
+    onTextChange?: any;
     field: {
         name: string;
         onBlur: any;
@@ -67,7 +68,7 @@ export const InputPasswordWithForgot = (props: Props) => {
 
 export const OtpInput = (props: Props) => {
     const { editable, placeholder, field: { name, onBlur, value },
-        form: { setFieldValue, errors, touched }, children, secureTextEntry } = props;
+        form: { setFieldValue, errors, touched }, children, secureTextEntry, onTextChange } = props;
     const color = editable ? Colors.text : Colors.textPrimary;
     const borderColor = errors[name] && touched[name] ? Colors.error : Colors.text;
     const inputStyle = [styles.otpInput, { color }];
@@ -81,7 +82,10 @@ export const OtpInput = (props: Props) => {
                 style={inputStyle}
                 value={value}
                 placeholder={placeholder}
-                onChangeText={(value) => setFieldValue(name, value)}
+                onChangeText={(value) => {
+                    props.onTextChange(value)
+                    // setFieldValue(name, value);
+                }}
                 onBlur={(value) => onBlur(value)}
                 secureTextEntry={secureTextEntry}
             />
@@ -92,7 +96,7 @@ export const InputWithBorder = (props: Props) => {
     const { placeholder, field: { name } } = props;
     return (
         <InputContainer placeholder={placeholder} name={name}>
-            <Input {...props} inputStyle={styles.inputWithContainer} />
+            <Input {...props} showError={false} inputStyle={styles.inputWithContainer} />
         </InputContainer>
     );
 };

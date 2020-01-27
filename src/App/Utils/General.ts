@@ -5,3 +5,11 @@ export const getDateFromString = (date: Date) => {
     let year = date.getFullYear();
     return `${month}/${day}/${year}`;
 };
+
+export const getOTPArrayFromString = (otp: Number | string) => {
+    if (otp.toString().length === 4 && !isNaN(Number(otp))) {
+        return String(otp).split('');
+    } else {
+        return false;
+    }
+};
