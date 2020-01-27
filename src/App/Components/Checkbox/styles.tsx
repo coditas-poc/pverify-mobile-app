@@ -13,9 +13,9 @@ export default StyleSheet.create({
         width: '95%',
     },
     termsText: {
-        fontSize: normalize(16),
+        fontSize: normalize(13),
         lineHeight: normalize(24),
-        marginStart: 12,
+        marginStart: 4,
         fontFamily: Fonts.type.base,
     },
 });

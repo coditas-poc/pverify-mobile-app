@@ -1,15 +1,20 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import styles from './style';
-const Card = ({ headerDecription, typeDecription }) => {
+type CardProps = {
+    headerDecription: string;
+    typeDecription: string;
+    children: React.ReactNode
+};
+const Card = ({ headerDecription, typeDecription, children }: CardProps) => {
     return (
         <View style={styles.cardCointainer}>
             <Text style={styles.cardHeaderText}>
                 {headerDecription}
-                {/* Take a picture of your {headerDecription}’s licence, */}
             </Text>
             <Text style={styles.cardcontentText}>{typeDecription}</Text>
             <View style={styles.cardCameracontent}>
+                {children}
             </View>
             <Text style={styles.cardbottomtext}>
                 This will be used to verify your Identification

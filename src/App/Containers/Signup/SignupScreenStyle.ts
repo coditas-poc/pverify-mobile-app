@@ -13,13 +13,15 @@ export default StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
     flex: 1,
-    marginBottom: 50,
+    width: Metrics.screenWidth,
+    // height: Metrics.screenHeight - 56,
   },
   signUpButton: {
     borderWidth: 0,
     backgroundColor: Colors.transparent,
     paddingVertical: 0,
     paddingHorizontal: 0,
+    borderRadius: 0,
     borderColor: Colors.background,
     shadowOpacity: 0,
     shadowOffset: { height: 0, width: 0 },
@@ -27,21 +29,12 @@ export default StyleSheet.create({
   },
 
   buttomContent: {
-    flexDirection: 'row',
-    justifyContent: 'space-evenly',
-    marginTop: normalize(39),
-    bottom: -28,
-    position: 'absolute',
-    marginRight: normalize(26),
-    marginLeft: normalize(26),
-  },
-  skipContent: {
-    flex: 1,
-    alignItems: 'flex-start',
-  },
-  manualContent: {
-    flex: 1,
-    alignItems: 'flex-end',
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    marginTop: normalize(16),
+    paddingHorizontal: normalize(10),
+    position: 'relative',
   },
   finalRegisterScreenHeaderText: {
     fontSize: normalize(20),
@@ -52,7 +45,6 @@ export default StyleSheet.create({
     color: Colors.primary,
   },
   checkBoxParentContainer: {
-    marginVertical: 20,
     width: '90%',
     maxWidth: Metrics.screenWidth,
   },

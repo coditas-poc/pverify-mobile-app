@@ -11,12 +11,16 @@ interface Props {
 export const InputContainer = (props: Props) => {
     const { placeholder, name, children } = props;
     return (
-        <View style={styles.borderContainer} >
-            <Text style={styles.containerPlaceHolder}>
-                {placeholder}
-            </Text>
-            {children}
-            <ErrorMessage name={name} component={FormError} />
-        </View >
+        <View style={styles.externalContainer}>
+            <View style={styles.borderContainer} >
+                <Text style={styles.containerPlaceHolder}>
+                    {placeholder}
+                </Text>
+                {children}
+            </View>
+            <View style={{ marginTop: 4, marginStart: 8 }}>
+                <ErrorMessage name={name} component={FormError} />
+            </View>
+        </View>
     );
 };

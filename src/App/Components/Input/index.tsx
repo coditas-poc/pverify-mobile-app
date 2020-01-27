@@ -5,12 +5,12 @@ import { ErrorMessage } from 'formik';
 import FormError from '../FormError';
 import { Colors, Helpers } from 'Theme';
 import { InputContainer } from '../InputContainer';
-import DateTimePicker from '@react-native-community/datetimepicker';
 interface Props {
     placeholder: string;
     editable: boolean;
     children?: React.ReactNode;
     inputStyle?: Object;
+    showError?: boolean;
     field: {
         name: string;
         onBlur: any;
@@ -29,7 +29,7 @@ interface Props {
 
 const Input = (props: Props) => {
     const { editable, placeholder, field: { name, onBlur, value },
-        form: { setFieldValue, errors, touched }, children, secureTextEntry } = props;
+        form: { setFieldValue, errors, touched }, children, secureTextEntry, showError } = props;
     const color = editable ? Colors.text : Colors.textPrimary;
     const borderColor = errors[name] && touched[name] ? Colors.error : Colors.text;
     const inputStyle = [styles.input, { color }];
@@ -50,7 +50,9 @@ const Input = (props: Props) => {
                     {children}
                 </View>
             </View>
-            <ErrorMessage name={name} component={FormError} />
+            {showError &&
+                <ErrorMessage name={name} component={FormError} />
+            }
         </View>
     );
 };
@@ -74,6 +76,7 @@ export const InputWithBorder = (props: Props) => {
 
 Input.defaultProps = {
     disabled: false,
+    showError: true,
 };
 
 export default Input;

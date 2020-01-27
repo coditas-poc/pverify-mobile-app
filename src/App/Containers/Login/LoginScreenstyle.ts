@@ -1,6 +1,7 @@
 import {StyleSheet} from 'react-native';
 import ApplicationStyles from 'App/Theme/ApplicationStyles';
 import {Metrics, Fonts, Colors} from 'Theme';
+import {normalize} from 'App/Theme/Metrics';
 
 export default StyleSheet.create({
   container: {
@@ -25,7 +26,8 @@ export default StyleSheet.create({
     justifyContent: 'space-evenly',
     alignItems: 'center',
     flex: 1,
-    marginBottom: 50,
+    width: Metrics.screenWidth,
+    height: Metrics.screenHeight - 56,
   },
   loginSignupWrapper: {
     marginTop: 20,
@@ -34,17 +36,15 @@ export default StyleSheet.create({
     height: 150,
   },
   fbGoogleWrapper: {
-    marginTop: 10,
     flexDirection: 'row',
     justifyContent: 'space-around',
   },
   continueCointainer: {
-    marginVertical: 10,
+    marginVertical: normalize(18),
     position: 'relative',
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    width: Metrics.screenWidth - 64,
   },
   continueLine: {
     height: 1,
@@ -60,7 +60,7 @@ export default StyleSheet.create({
   signUpButton: {
     borderColor: Colors.background,
     shadowOpacity: 0,
-    shadowOffset: { height: 0, width: 0 },
+    shadowOffset: {height: 0, width: 0},
     elevation: 0,
-},
+  },
 });
