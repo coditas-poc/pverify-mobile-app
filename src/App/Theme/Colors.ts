@@ -14,5 +14,6 @@ export default {
   background: '#FFFFFF',
   error: '#E50D18',
   border: '#BBBBBB',
+  placeholder: '#777777',
 
 };
