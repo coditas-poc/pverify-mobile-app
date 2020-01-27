@@ -20,7 +20,8 @@ export const OtpForm = ({ values, setFieldValue }: any) => {
                         name={`otp[${index}]`}
                         component={OtpInput}
                         onTextChange={(text: any) => autoFillAllOTP(text, setFieldValue, index)}
-                        placeholder="_" />
+                        placeholder="_"
+                    />
                 ))}
             </View>
         </View>

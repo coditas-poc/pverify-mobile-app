@@ -60,7 +60,7 @@ class PhoneVerificationScreen extends Component<Props> {
                     initialValues={initialValues}
                     onSubmit={this.onSubmit}
                     navigation={this.props.navigation} >
-                    {({ values }: any) => {}}
+                    {({ values }: any) => { }}
                     <Wizard.Page validationSchema={SignupSchema}>
                         {(props: any) => {
                             return <PhoneForm />;
@@ -68,7 +68,7 @@ class PhoneVerificationScreen extends Component<Props> {
                     </Wizard.Page>
                     <Wizard.Page validationSchema={SignupSchema}>
                         {(props: any) => {
-                            return <OtpForm {...props}/>;
+                            return <OtpForm {...props} />;
                         }}
                     </Wizard.Page>
                 </Wizard>
