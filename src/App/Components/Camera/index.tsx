@@ -1,11 +1,12 @@
-import { SafeAreaView } from 'react-navigation';
-import { ActivityIndicator, View, Text, StyleSheet } from 'react-native';
-import { normalize } from 'App/Theme/Metrics';
+import * as React from 'react';
+
+import { ActivityIndicator, View, Text, SafeAreaView } from 'react-native';
+
 import { RNCamera, RNCameraProps } from 'react-native-camera';
 import { Colors } from 'App/Theme';
-import React from 'react';
 
 import styles from './style';
+import { PureComponent } from 'react';
 
 type Props = {
     flash?: 'off' | 'on' | 'auto' | 'torch',
@@ -27,52 +28,74 @@ type Props = {
     faces?: [],
     textBlocks?: [],
     barcodes?: RNCameraProps['barCodeTypes'],
-    chiildren?: React.ReactNode,
+    children?: React.ReactNode,
+    passRef: any,
+
 };
 
-let Ocr = (props: Props, forwardedRef: any) => {
-    const { type, flash, autoFocus, zoom, whiteBalance, ratio, depth } = props;
-    const cameraNotAuthorized = <Text
+export default class Ocr extends PureComponent<Props> {
+    camera: RNCamera | null | undefined;
+    cameraNotAuthorized = () => (<Text
         style={styles.cameraNotAuthorized}>
         Camera access was not granted. Please go to your phone's settings and allow camera access.
-            </Text>;
-    return (
-        <RNCamera ref={ref => { forwardedRef = ref; }}
-            style={styles.preview}
-            type={type}
-            flashMode={flash}
-            autoFocus={autoFocus}
-            zoom={zoom}
-            whiteBalance={whiteBalance}
-            ratio={ratio}
-            focusDepth={depth}
-            captureAudio={false}
-            androidCameraPermissionOptions={{
-                title: 'Permission to use camera',
-                message: 'We need your permission to use your camera',
-                buttonPositive: 'Ok',
-                buttonNegative: 'Cancel',
-            }}
-            pendingAuthorizationView={
-                <SafeAreaView style={styles.cameraLoading}>
-                    <ActivityIndicator color={Colors.error} />
-                </SafeAreaView>
-            }
-            notAuthorizedView={
-                <View>
-                    {cameraNotAuthorized}
-                </View>
-            }
-        >
-            <View style={{ flex: 1 }}>
-                <View style={styles.cameraTopLeft} />
-                <View style={styles.cameraTopRight} />
-                <View style={styles.cameraBottomRight} />
-                <View style={styles.cameraBottomLeft} />
-            </View>
-        </RNCamera>
-    );
-};
-Ocr = React.forwardRef<Props, React.RefForwardingComponent<typeof RNCamera>>(Ocr);
+            </Text>)
 
-export default Ocr;
+    takePicture = async () => {
+        if (this.camera) {
+            const options = { quality: 0.5, base64: true };
+            const data = await this.camera.takePictureAsync(options);
+            // console.log(data.uri);
+        }
+    }
+
+    render() {
+        const { type, flash, autoFocus, zoom, whiteBalance, ratio, depth } = this.props;
+        return (
+            <RNCamera
+                ref={ref => {
+                    this.camera = ref;
+                }}
+                style={styles.preview}
+                type={type}
+                flashMode={flash}
+                autoFocus={autoFocus}
+                zoom={zoom}
+                whiteBalance={whiteBalance}
+                ratio={ratio}
+                focusDepth={depth}
+                captureAudio={false}
+                androidCameraPermissionOptions={{
+                    title: 'Permission to use camera',
+                    message: 'We need your permission to use your camera',
+                    buttonPositive: 'Ok',
+                    buttonNegative: 'Cancel',
+                }}
+                androidRecordAudioPermissionOptions={{
+                    title: 'Permission to use audio recording',
+                    message: 'We need your permission to use your audio',
+                    buttonPositive: 'Ok',
+                    buttonNegative: 'Cancel',
+                }}
+                onCameraReady={() => this.props.passRef(this.camera)}
+                pendingAuthorizationView={
+                    < SafeAreaView style={styles.cameraLoading} >
+                        <ActivityIndicator color={Colors.error} />
+                    </SafeAreaView >
+                }
+                notAuthorizedView={
+                    < View >
+                        {this.cameraNotAuthorized}
+                    </View >
+                }
+            >
+                <View style={{ flex: 1 }}>
+                    <View style={styles.cameraTopLeft} />
+                    <View style={styles.cameraTopRight} />
+                    <View style={styles.cameraBottomRight} />
+                    <View style={styles.cameraBottomLeft} />
+                </View>
+            </RNCamera>
+        );
+    }
+
+}

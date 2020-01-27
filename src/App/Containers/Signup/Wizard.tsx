@@ -6,12 +6,14 @@ import { Primary } from 'App/Components/Button';
 import styles from './SignupScreenStyle';
 import { SignUpButomContent } from './SignUpButtomContent';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { normalize } from 'App/Theme/Metrics';
 type Props = {
     initialValues: any;
     children: any;
     onSubmit: any;
     navigation: any;
+    takePicture: any;
+    ref: any;
+    cameraRef: any;
 };
 type State = {
     page: number;
@@ -97,11 +99,22 @@ export class Wizard extends Component<Props, State> {
             bag.setTouched(true);
         }
     }
+
+    takePicture = async () => {
+        // console.log('this.props.cameraRef', this.props.cameraRef);
+        if (this.props.cameraRef) {
+            const options = { quality: 0.5, base64: true };
+            const data = await this.props.cameraRef.takePictureAsync(options);
+            // console.log(data.uri);
+        }
+    }
+    
     render() {
-        const { children, navigation } = this.props;
+        const { children, navigation, takePicture, ref } = this.props;
         const { page, values } = this.state;
         const activePage: any = React.Children.toArray(children)[page];
         const isLastPage = page === React.Children.count(children) - 1;
+        // console.log('ref', ref);
         return (
             <Formik
                 initialValues={values}
@@ -112,9 +125,9 @@ export class Wizard extends Component<Props, State> {
                     return (
                         <KeyboardAwareScrollView>
                             <View style={styles.signupCointainer}>
-                                {React.cloneElement(activePage, { parentState: { ...formikProps } })}
-                                {page === 0 && <SignUpButomContent handleSubmit={this.next} navigation={navigation}/>}
-                                {page !== 0 && !isLastPage && <ButtomContent capture={() => {}} manual={() => { }} />}
+                                {React.cloneElement(activePage, { parentState: { ...formikProps, ref}})}
+                                {page === 0 && <SignUpButomContent handleSubmit={this.next} navigation={navigation} />}
+                                {page !== 0 && !isLastPage && <ButtomContent capture={this.takePicture} manual={() => { }} />}
                                 {isLastPage && <Primary onPress={formikProps.handleSubmit} label="Join" />}
                             </View>
                         </KeyboardAwareScrollView>
