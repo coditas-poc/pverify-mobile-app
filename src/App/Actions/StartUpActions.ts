@@ -3,6 +3,6 @@ import { Dispatch } from 'react';
 
 export function startup() {
   return async function(dispatch: Dispatch<any>) {
-    NavigationService.navigateAndReset('LoginScreen');
+    NavigationService.navigateAndReset('PhoneVerificationScreen');
   };
 }

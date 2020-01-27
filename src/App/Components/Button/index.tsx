@@ -15,11 +15,14 @@ type Props = {
 };
 
 const Button = (props: Props) => {
-  const {label, onPress, buttonStyle, textColor } = props; 
+  const { label, onPress, buttonStyle, textColor, children } = props;
   const buttonStyles = [styles.button, buttonStyle];
   return (
     <TouchableOpacity style={buttonStyles} onPress={onPress} activeOpacity={0.7}>
-      <Text style={textColor}>{label}</Text>
+      {children
+        ? children
+        : <Text style={textColor}>{label}</Text>
+      }
     </TouchableOpacity>
   );
 };
@@ -28,7 +31,7 @@ export const Primary = (props: any) => {
 };
 
 export const Other = (props: any) => {
-  const buttonStyle = {...styles.buttonOther, ...props.buttonStyle};
+  const buttonStyle = { ...styles.buttonOther, ...props.buttonStyle };
   return (<Button  {...props} buttonStyle={buttonStyle} textColor={styles.buttonOtherText} />);
 };
 

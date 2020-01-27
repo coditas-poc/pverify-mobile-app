@@ -6,6 +6,7 @@ import { Primary } from 'App/Components/Button';
 import styles from './SignupScreenStyle';
 import { SignUpButomContent } from './SignUpButtomContent';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { normalize } from 'App/Theme/Metrics';
 type Props = {
     initialValues: any;
     children: any;

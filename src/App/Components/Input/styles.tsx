@@ -44,5 +44,9 @@ const styles = StyleSheet.create({
     height: normalize(49),
     marginHorizontal: normalize(11.5),
   },
+  inputWithContainer: {
+    borderBottomWidth: 0,
+    marginStart: 12,
+  },
 });
 export default styles;

@@ -8,9 +8,10 @@ import { DLBackForm } from './DLBackForm';
 import { DLFrontForm } from './DLFrontForm';
 import { InsuranceBackForm } from './InsuranceBackForm';
 import { InsuranceFrontForm } from './InsuranceFrontForm';
+import { ProfileReview } from './ProfileReview';
 import { SignupForm } from './SignupForm';
 import { Wizard } from './Wizard';
-import { SignupSchema } from '../../Utils/formikValidation';
+import { SignupSchema, ProfileConfirmSchema } from '../../Utils/formikValidation';
 import Header from 'App/Components/Header';
 
 type Props = {
@@ -56,6 +57,13 @@ class SignupScreen extends Component<Props> {
             email: '',
             password: '',
             confirmPassword: '',
+            name: '',
+            dob: 'Select Date',
+            sex: 'select gender',
+            provider: 'select provider',
+            memberId: '',
+            condition1: false,
+            condition2: false,
         };
         return (
             <View style={styles.container}>
@@ -79,6 +87,9 @@ class SignupScreen extends Component<Props> {
                     </Wizard.Page>
                     <Wizard.Page validationSchema={SignupSchema}>
                         {() => <InsuranceBackForm />}
+                    </Wizard.Page>
+                    <Wizard.Page validationSchema={ProfileConfirmSchema}>
+                        {() => <ProfileReview />}
                     </Wizard.Page>
                 </Wizard>
             </View>

@@ -13,8 +13,8 @@ export const SignUpButomContent = ({ handleSubmit, navigation }: any) => (
         </View>
         <View style={{
             marginTop: normalize(23),
-            position: 'absolute',
-            bottom: normalize(108),
+            // position: 'absolute',
+            // bottom: normalize(108),
             justifyContent: 'space-around',
             flexDirection: 'row',
             alignItems: 'flex-start',
@@ -31,8 +31,8 @@ export const SignUpButomContent = ({ handleSubmit, navigation }: any) => (
         </View>
         <View style={{
             flexDirection: 'row',
-            position: 'absolute',
-            bottom: normalize(33),
+            // position: 'absolute',
+            // bottom: normalize(33),
             alignItems: 'center',
             width: normalize(272),
             marginTop: normalize(33),
