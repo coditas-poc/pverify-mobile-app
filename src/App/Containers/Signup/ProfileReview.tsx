@@ -1,24 +1,19 @@
 import React, { useState } from 'react';
 import { Formik, Field, FormikProps } from 'formik';
-import Input, { InputWithBorder, InputWithDatePicker } from 'Components/Input';
-import { Other, Primary } from 'Components/Button';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { InputWithBorder } from 'Components/Input';
+import { Primary } from 'Components/Button';
+import { View, Text } from 'react-native';
 import styles from './SignupScreenStyle';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { SignupSchema } from '../../Utils/formikValidation';
-import { normalize, screenWidth } from '../../Theme/Metrics';
-import { Colors } from 'Theme';
-import { PickerWithContainer } from 'App/Components/Picker';
+import { DropDownPicker, DatePicker } from 'App/Components/Picker';
 import { sexPicker, providerDummy } from 'App/Constants';
+import { CheckBoxWithText } from 'Components/Checkbox';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 type Props = {
     navigation: any;
 };
-type CheckBoxProps = {
-    isChecked: boolean;
-    onPress: any;
-    text: string;
-};
+
 export const ProfileReview = (props: Props) => {
     const initialValues = {
         name: 'Sam Johnson',
@@ -49,21 +44,21 @@ export const ProfileReview = (props: Props) => {
                                 id="outlined-date-of-birth-input"
                                 placeholder="Date of birth"
                                 name="dob"
-                                component={InputWithDatePicker}
+                                component={DatePicker}
                             />
                             <Field
                                 id="outlined-sex-picker"
                                 placeholder="Sex"
                                 name="sex"
                                 options={sexPicker}
-                                component={PickerWithContainer}
+                                component={DropDownPicker}
                             />
                             <Field
                                 id="outlined-provider-picker"
                                 placeholder="Provider"
                                 name="provider"
                                 options={providerDummy}
-                                component={PickerWithContainer}
+                                component={DropDownPicker}
                             />
                             <Field
                                 id="outlined-member-input"
@@ -89,17 +84,5 @@ export const ProfileReview = (props: Props) => {
             )}
 
         </Formik>
-    );
-};
-
-const CheckBoxWithText = (props: CheckBoxProps) => {
-    const { isChecked, onPress, text } = props;
-    return (
-        <View style={styles.checkBoxContainer}>
-            <TouchableOpacity onPress={onPress} activeOpacity={0.8}>
-                <Icon name={isChecked ? 'checkbox-marked-outline' : 'checkbox-blank-outline'} size={24} style={{ marginTop: 8 }} />
-            </TouchableOpacity>
-            <Text style={styles.termsText}>{text}</Text>
-        </View>
     );
 };

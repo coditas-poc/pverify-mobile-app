@@ -1,6 +1,11 @@
-import React from 'react';
-import { Picker } from 'react-native';
-import { ConfirmContainer } from '../InputContainer';
+import React, { useState } from 'react';
+import { Picker, TouchableOpacity } from 'react-native';
+import { InputContainer } from '../InputContainer';
+import { getDateFromString } from 'App/Utils/General';
+import DateTimePicker from '@react-native-community/datetimepicker';
+import Input from '../Input';
+import styles from './styles';
+import Button from '../Button';
 interface PickerProps {
     name: string;
     id: string | number;
@@ -25,10 +30,10 @@ interface Props {
         setFieldValue: any;
     };
 }
-export const PickerWithContainer = (props: Props) => {
+export const DropDownPicker = (props: Props) => {
     const { placeholder, field: { name, value }, form: { setFieldValue }, options } = props;
     return (
-        <ConfirmContainer placeholder={placeholder} name={name}>
+        <InputContainer placeholder={placeholder} name={name}>
             <Picker
                 onValueChange={(value) => { setFieldValue(name, value); }}
                 selectedValue={value}
@@ -40,6 +45,32 @@ export const PickerWithContainer = (props: Props) => {
                     );
                 })}
             </Picker>
-        </ConfirmContainer>
+        </InputContainer>
+    );
+};
+
+export const DatePicker = (props: Props) => {
+    const { placeholder, field: { name, value }, form: { setFieldValue } } = props;
+    const [isPickerVisible, setPickerVisibility] = useState(false);
+    let newField = { ...props.field };
+    if (value) {
+        newField = { ...newField, value: getDateFromString(new Date(value)) };
+    }
+    return (
+        <InputContainer placeholder={placeholder} name={name}>
+            <Button
+                buttonStyle={{ padding: 0 }}
+                onPress={() => setPickerVisibility(true)}>
+                <Input {...props} field={newField} editable={false} secureTextEntry={false} inputStyle={styles.inputWithContainer} />
+            </Button>
+            {isPickerVisible &&
+                <DateTimePicker
+                    onChange={(event, date) => {
+                        setPickerVisibility(false);
+                        setFieldValue(name, date?.toISOString());
+                    }}
+                    value={value ? new Date(value) : new Date()} />
+            }
+        </InputContainer>
     );
 };

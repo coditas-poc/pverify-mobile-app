@@ -8,7 +8,7 @@ interface Props {
     children?: React.ReactNode;
     name: string;
 }
-export const ConfirmContainer = (props: Props) => {
+export const InputContainer = (props: Props) => {
     const { placeholder, name, children } = props;
     return (
         <View style={styles.borderContainer} >
