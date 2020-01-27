@@ -61,6 +61,30 @@ export const InputPasswordWithForgot = (props: Props) => {
     );
 };
 
+export const OtpInput = (props: Props) => {
+    const { editable, placeholder, field: { name, onBlur, value },
+        form: { setFieldValue, errors, touched }, children, secureTextEntry } = props;
+    const color = editable ? Colors.text : Colors.textPrimary;
+    const borderColor = errors[name] && touched[name] ? Colors.error : Colors.text;
+    const inputStyle = [styles.otpInput, { color }];
+    const inputCointainerStyle = [styles.OtpInputCointainer, { borderBottomColor: borderColor }];
+    return (
+        <View style={inputCointainerStyle}>
+            <TextInput
+                keyboardType="phone-pad"
+                maxLength={1}
+                editable={editable}
+                style={inputStyle}
+                value={value}
+                placeholder={placeholder}
+                onChangeText={(value) => setFieldValue(name, value)}
+                onBlur={(value) => onBlur(value)}
+                secureTextEntry={secureTextEntry}
+            />
+        </View >
+    );
+};
+
 Input.defaultProps = {
     disabled: false,
 };

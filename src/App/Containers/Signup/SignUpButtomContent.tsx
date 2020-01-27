@@ -6,7 +6,7 @@ import { normalize, normal } from '../../Theme/Metrics';
 import Fonts from 'App/Theme/Fonts';
 import { Colors } from 'Theme';
 
-export const SignUpButomContent = ({ handleSubmit }: any) => (
+export const SignUpButomContent = ({ handleSubmit, navigation }: any) => (
     <>
         <View style={{ justifyContent: 'center', marginTop: normalize(16), height: 65 }}>
             <Primary onPress={handleSubmit} label="Sign up" />
@@ -25,7 +25,7 @@ export const SignUpButomContent = ({ handleSubmit }: any) => (
                 color: Colors.text,
             }}>Already have an account?</Text>
             <Other
-                onPress={() => { }}
+                onPress={() => navigation.pop()}
                 label="Log in"
                 buttonStyle={styles.signUpButton} />
         </View>

@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { Formik } from 'formik';
-import { ButtomContent } from './ButtomContent';
 import { View } from 'react-native';
 import { Primary } from 'App/Components/Button';
-import styles from './SignupScreenStyle';
-import { SignUpButomContent } from './SignUpButtomContent';
+import styles from './PvScreenStyles';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 type Props = {
     initialValues: any;
@@ -26,7 +24,7 @@ export class Wizard extends Component<Props, State> {
         super(props);
         this.state = {
             page: 0,
-            title: 'Sign up',
+            title: 'Phone Verification',
             values: props.initialValues,
         };
     }
@@ -34,15 +32,8 @@ export class Wizard extends Component<Props, State> {
         let title = '';
         switch (page) {
             case 0:
-                title = 'Sign up';
-                break;
             case 1:
-            case 2:
-                title = 'Driver License';
-                break;
-            case 3:
-            case 4:
-                title = 'Insurance Card';
+                title = 'Phone Verification';
                 break;
             default:
                 title = '';
@@ -110,11 +101,10 @@ export class Wizard extends Component<Props, State> {
                 {formikProps => {
                     return (
                         <KeyboardAwareScrollView>
-                            <View style={styles.signupCointainer}>
+                            <View style={styles.phoneVefifyCointainer}>
                                 {React.cloneElement(activePage, { parentState: { ...formikProps } })}
-                                {page === 0 && <SignUpButomContent handleSubmit={this.next} navigation={navigation}/>}
-                                {page !== 0 && !isLastPage && <ButtomContent capture={() => {}} manual={() => { }} />}
-                                {isLastPage && <Primary onPress={formikProps.handleSubmit} label="Join" />}
+                                {page === 0 && <Primary onPress={this.next} label="Send me a pin" />}
+                                {isLastPage && <Primary onPress={formikProps.handleSubmit} label="Verify" />}
                             </View>
                         </KeyboardAwareScrollView>
                     );

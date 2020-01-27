@@ -2,22 +2,19 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { View, StatusBar } from 'react-native';
 
-import styles from './SignupScreenStyle';
+import styles from './PvScreenStyles';
 import { Colors, Images } from 'Theme';
-import { DLBackForm } from './DLBackForm';
-import { DLFrontForm } from './DLFrontForm';
-import { InsuranceBackForm } from './InsuranceBackForm';
-import { InsuranceFrontForm } from './InsuranceFrontForm';
-import { SignupForm } from './SignupForm';
 import { Wizard } from './Wizard';
 import { SignupSchema } from '../../Utils/formikValidation';
 import Header from 'App/Components/Header';
+import { PhoneForm } from './PhoneForm';
+import { OtpForm } from './OtpForm';
 
 type Props = {
     navigation: any;
 };
 
-class SignupScreen extends Component<Props> {
+class PhoneVerificationScreen extends Component<Props> {
     child: React.RefObject<any>;
     static navigationOptions = ({ navigation }: Props) => {
         const { state } = navigation;
@@ -27,7 +24,6 @@ class SignupScreen extends Component<Props> {
             headerLeft: <Header.Left type={Images.back} onPress={() => page !== 0 ?
                 navigation.state.params.previous() : navigation.pop()} />,
             headerTitle: <Header.Title title={title} />,
-            headerRight: page !== 0 ? <Header.Right type="Text" name="Skip" onPress={() => navigation.state.params.next()} /> : null,
         };
     }
     constructor(props: Readonly<Props>) {
@@ -53,9 +49,8 @@ class SignupScreen extends Component<Props> {
 
     render() {
         const initialValues = {
-            email: '',
-            password: '',
-            confirmPassword: '',
+            phoneNumber: '',
+            otp: ['', '', '', ''],
         };
         return (
             <View style={styles.container}>
@@ -65,20 +60,16 @@ class SignupScreen extends Component<Props> {
                     initialValues={initialValues}
                     onSubmit={this.onSubmit}
                     navigation={this.props.navigation} >
+                    {({ values }: any) => {}}
                     <Wizard.Page validationSchema={SignupSchema}>
-                        {() => <SignupForm />}
+                        {(props: any) => {
+                            return <PhoneForm />;
+                        }}
                     </Wizard.Page>
                     <Wizard.Page validationSchema={SignupSchema}>
-                        {() => <DLFrontForm />}
-                    </Wizard.Page>
-                    <Wizard.Page validationSchema={SignupSchema}>
-                        {() => <DLBackForm />}
-                    </Wizard.Page>
-                    <Wizard.Page validationSchema={SignupSchema}>
-                        {() => <InsuranceFrontForm />}
-                    </Wizard.Page>
-                    <Wizard.Page validationSchema={SignupSchema}>
-                        {() => <InsuranceBackForm />}
+                        {(props: any) => {
+                            return <OtpForm {...props}/>;
+                        }}
                     </Wizard.Page>
                 </Wizard>
             </View>
@@ -96,4 +87,4 @@ const mapDispatchToProps = (dispatch: any) => ({});
 export default connect(
     mapStateToProps,
     mapDispatchToProps,
-)(SignupScreen);
+)(PhoneVerificationScreen);

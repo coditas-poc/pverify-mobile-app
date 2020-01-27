@@ -25,5 +25,24 @@ const styles = StyleSheet.create({
     fontFamily: Fonts.type.base,
     fontSize: normalize(14),
   },
+  otpInput: {
+    position: 'relative',
+    textAlign: 'center',
+    paddingVertical: 8,
+    fontSize: normalize(20),
+    color: Colors.text,
+    fontFamily: Fonts.type.base,
+    width: '100%',
+  },
+  OtpInputCointainer: {
+    borderColor: '#BBBBBB',
+    borderWidth: normalize(1),
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: normalize(8),
+    width: normalize(49),
+    height: normalize(49),
+    marginHorizontal: normalize(11.5),
+  },
 });
 export default styles;
