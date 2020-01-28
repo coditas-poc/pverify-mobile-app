@@ -14,7 +14,7 @@ type Props = {
 export const ProfileReview = (props: Props) => {
     return (
         <View style={styles.signupCointainer}>
-            <Text style={styles.finalRegisterScreenHeaderText}>Please review and finish your profile</Text>
+            <Text style={styles.finalRegisterScreenHeaderText}>{'Please review and finish your Profile'}</Text>
             <View style={{ justifyContent: 'center', marginTop: 22 }}>
                 <Field
                     id="outlined-name-input"
@@ -63,7 +63,10 @@ export const ProfileReview = (props: Props) => {
                     text={'I have read and accepted MyHealthID’s HIPPA Authorization.'}
                     component={CheckBoxWithText}
                 />
-                <ErrorMessage name={'condition1' && 'condition2'} component={FormError} />
+                <ErrorMessage
+                    name={'condition1' && 'condition2'}
+                    style={{ marginStart: 15 }}
+                    component={FormError} />
             </View>
         </View>
     );

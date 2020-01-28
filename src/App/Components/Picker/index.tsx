@@ -43,7 +43,7 @@ export const DropDownPicker = (props: Props) => {
                 mode={'dropdown'}>
                 {options && options.map((option) => {
                     return (
-                        <Picker.Item label={option.name} value={option.id} />
+                        <Picker.Item label={option.name} value={option.id} key={option.id} />
                     );
                 })}
             </Picker>

@@ -45,8 +45,9 @@ export default StyleSheet.create({
     color: Colors.primary,
   },
   checkBoxParentContainer: {
-    width: '90%',
-    maxWidth: Metrics.screenWidth,
+    marginBottom: 20,
+    width: '87%',
+    maxWidth: Metrics.screenWidth - normalize(12),
   },
   checkBoxContainer: {
     marginVertical: 8,
