@@ -57,7 +57,7 @@
     "jest": "^24.1.0",
     "metro-react-native-babel-preset": "0.54.1",
     "node-sass": "^4.13.0",
-    "postcss": "^7.0.26",
+    "postcss": "^7.0.36",
     "postcss-css-variables": "^0.14.0",
     "postcss-loader": "^3.0.0",
     "react-native-typed-postcss-transformer": "^0.10.2",
